@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
 
-export default function Register() {
+export default function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -13,9 +13,9 @@ export default function Register() {
 
     try {
       const res = await axios.post('/api/auth/register', { email, password });
-      setMessage('✅ Registration successful! Go to Login');
+      setMessage('Registration successful! Go to Login');
     } catch (err) {
-      setMessage('❌ ' + (err.response?.data?.error || 'Registration failed'));
+      setMessage('Error: ' + (err.response?.data?.error || 'Try again'));
     }
   };
 
